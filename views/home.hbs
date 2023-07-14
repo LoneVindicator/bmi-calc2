@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <title>Handlebars at work</title>
+</head>
+
+<body>
+
+    {{!-- <img src="img/logo.png" />
+    <h1>Hello There, {{name}}</h1> --}}
+
+    <h1>BMI Calculator</h1>
+
+    <div class="input-container">
+
+        {{!-- <label for="age">Age</label>
+        <input id="age" name="age" type="number" /> --}}
+
+
+        {{!-- <div>
+
+            <label for="sex">Sex</label>
+
+            <label for="male">Male</label>
+            <input name="sex" id="male" type="radio" value="male">
+            <label for="female">Female</label>
+            <input name="sex" id="female" type="radio" value="female">
+
+
+        </div> --}}
+
+        <label for="height">Height (cm)</label>
+        <input id="height" name="height" type="number" />
+        <label for="weight">Weight (kg)</label>
+        <input id="weight" name="weight" type="number" />
+
+        <button id="calculate-btn">Calculate</button>
+
+
+    </div>
+
+    <div class="output-container">
+
+        <h1 id="output-text"></h1>
+        <h1 id="output-comment-text"></h1>
+
+    </div>
+
+
+
+    <script src="js/bmiCalc.js"></script>
+
+</body>
+
+</html>

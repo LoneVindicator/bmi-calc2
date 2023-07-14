@@ -1,0 +1,26 @@
+#Script to deploy on the Render cloud platform
+
+name: Node.js CI
+
+on: #specifies when this will run ie when a push/pull request is made
+  push: 
+    branches: [ main ] 
+pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs:on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: bounceapp/render-action@0.6.0
+      with:
+      render-token: ${{secrets.RENDER_API_KEY}}
+      github-token: ${{secrets.ACC_API_KEY}}
+      service-id: "srv-cg90ltg2qv259b98u1kg"
+      retries: 20
+      wait: 16000
+      sleep: 30000
+

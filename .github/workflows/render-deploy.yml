@@ -1,5 +1,6 @@
 #Script to deploy on the Render cloud platform
 #specifies when this will run ie when a push/pull request is made
+#Point of this is to ensure that code that fails to build will not be deployed to render
 
 name: Node.js CI
 

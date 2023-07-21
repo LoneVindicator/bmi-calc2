@@ -2,6 +2,7 @@ console.log("js running");
 
 const height = document.getElementById("height");
 const weight = document.getElementById("weight");
+const age = document.getElementById("age");
 const outputText = document.getElementById("output-text");
 const outputCommentText = document.getElementById("output-comment-text");
 
@@ -9,6 +10,8 @@ const calculateButton = document.getElementById("calculate-btn")
 
 
 calculateButton.addEventListener("click", function () {
+
+  const ageVal = age.value;
 
     console.log(`(${weight.value})^2`)
 
@@ -28,13 +31,15 @@ calculateButton.addEventListener("click", function () {
     outputText.innerText = `Your BMI is : ${bmi}`
     outputCommentText.innerText = `You are ${category}`
 
-    saveBMIToJSON(bmi);
+    saveBMIToJSON(bmi, ageVal);
 })
 
-function saveBMIToJSON(bmi) {
+function saveBMIToJSON(bmi, age) {
   const data = {
-    bmi,
-    timestamp: new Date().toISOString()
+    
+    timestamp: new Date().toISOString(),
+    age: age,
+    bmi: bmi,
   };
 
   // Make an AJAX POST request to the server

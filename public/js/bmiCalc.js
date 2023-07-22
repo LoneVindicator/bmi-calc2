@@ -1,8 +1,8 @@
 console.log("js running");
 
-const height = document.getElementById("height");
-const weight = document.getElementById("weight");
-const age = document.getElementById("age");
+const heightEl = document.getElementById("height");
+const weightEl = document.getElementById("weight");
+const ageEl = document.getElementById("age");
 const outputText = document.getElementById("output-text");
 const outputCommentText = document.getElementById("output-comment-text");
 
@@ -11,11 +11,11 @@ const calculateButton = document.getElementById("calculate-btn")
 
 calculateButton.addEventListener("click", function () {
 
-  const ageVal = age.value;
+  const age = ageEl.value;
 
-    console.log(`(${weight.value})^2`)
+    console.log(`(${weightEl.value})^2`)
 
-    const bmi = (weight.value) / [(height.value / 100) ^ 2]
+    const bmi = (weightEl.value) / [(heightEl.value / 100) ^ 2]
     let category = "";
 
     if (bmi < 18.5) {
@@ -31,28 +31,30 @@ calculateButton.addEventListener("click", function () {
     outputText.innerText = `Your BMI is : ${bmi}`
     outputCommentText.innerText = `You are ${category}`
 
-    saveBMIToJSON(bmi, ageVal);
+    saveBMIToJSON(bmi, age)
 })
 
 function saveBMIToJSON(bmi, age) {
+
   const data = {
-    
-    timestamp: new Date().toISOString(),
     age: age,
     bmi: bmi,
   };
+
+  console.log(data)
 
   // Make an AJAX POST request to the server
   fetch('/', {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     },
-    body: JSON.stringify(data)
+    body: JSON.stringify(data),
   })
     .then(response => {
       if (response.ok) {
         console.log('BMI data saved successfully!');
+        
       } else {
         console.error('Error saving BMI data:', response.status);
       }
@@ -61,3 +63,4 @@ function saveBMIToJSON(bmi, age) {
       console.error('Error saving BMI data:', error);
     });
 }
+
